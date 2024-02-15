@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './pages/auth/auth.component';
+import { CustomerAuthComponent } from './pages/customer-auth/customer-auth.component';
+import { EmployeeAuthComponent } from './pages/employee-auth/employee-auth.component';
 
 const routes: Routes = [
-  {path:'auth',component:AuthComponent}
+  {path:'auth',component:CustomerAuthComponent},
+  {path:'admin/auth',component:EmployeeAuthComponent}
+  
 ];
 
 @NgModule({
