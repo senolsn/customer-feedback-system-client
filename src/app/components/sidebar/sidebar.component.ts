@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// sidebar.component.ts
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+
+ 
 }

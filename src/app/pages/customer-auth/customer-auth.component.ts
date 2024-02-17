@@ -59,7 +59,7 @@ export class CustomerAuthComponent {
           .subscribe(
             (response) => {
               this.toastr.success('Successfuly Entry!', 'Success');
-              localStorage.setItem('token', response.token);
+              localStorage.setItem('token', response.data.token);
               this.router.navigate(['/']);
             },
             (responseError) => {
@@ -82,8 +82,8 @@ export class CustomerAuthComponent {
       let loginModelForCustomer = Object.assign({},this.loginForCustomerForm.value);
       this.authService.loginForCustomer(loginModelForCustomer).subscribe(response => {
         this.toastr.success("Succesfuly Entry!","Success")
-        localStorage.setItem('token',response.token);
-        this.router.navigate(["/dashboard"]);
+        localStorage.setItem('token',response.data.token);
+        this.router.navigate(["/"]);
       },responseError =>{
         console.log(responseError);
         this.toastr.warning("Please check the entered values!")

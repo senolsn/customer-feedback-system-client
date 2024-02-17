@@ -9,7 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomerAuthComponent } from './pages/customer-auth/customer-auth.component';
 import { EmployeeAuthComponent } from './pages/employee-auth/employee-auth.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SolvedComplaintsComponent } from './components/solved-complaints/solved-complaints.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     CustomerAuthComponent,
     EmployeeAuthComponent,
     DashboardComponent,
+    ComplaintsComponent,
     SidebarComponent,
+    SolvedComplaintsComponent
   ],
   imports: [
     BrowserModule,

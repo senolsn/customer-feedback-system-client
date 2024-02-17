@@ -60,8 +60,8 @@ export class EmployeeAuthComponent {
           .subscribe(
             (response) => {
               this.toastr.success('Successfuly Entry!', 'Success');
-              localStorage.setItem('token', response.token);
-              this.router.navigate(['/']);
+              localStorage.setItem('token', response.data.token);
+              this.router.navigate(['/dashboard']);
             },
             (responseError) => {
               console.log(responseError);
@@ -82,8 +82,8 @@ export class EmployeeAuthComponent {
       let loginModelForEmployee = Object.assign({},this.loginForEmployeeForm.value);
       this.authService.loginForEmployee(loginModelForEmployee).subscribe(response => {
         this.toastr.success("Successfuly Entry!","Success")
-        localStorage.setItem('token',response.token);
-        this.router.navigate(["/"]);
+        localStorage.setItem('token',response.data.token);
+        this.router.navigate(["/dashboard"]);
       }, responseError => {
         this.toastr.warning("Please check the entered values!")
       })

@@ -1,0 +1,54 @@
+<div class="html">
+  <div class="body">
+    <div class="complaints-container">
+      <app-sidebar></app-sidebar>
+
+      <main>
+        <div class="recent-orders">
+          <h2>Continuing complaints</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let complaint of unResolvedComplaints">
+                <td>{{complaint.title}}</td>
+                <td>{{complaint.customer.firstName +' '+ complaint.customer.lastName}}</td>
+                <td>{{complaint.employee.firstName +' '+ complaint.employee.lastName}}</td>
+                <td class="warning">{{complaint.complaintStatus == 1 ? "Inprogress" : complaint.complaintStatus}}</td>
+                <td class="primary">Details</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-symbols-outlined active"> light_mode </span>
+            <span class="material-symbols-outlined"> dark_mode </span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b>{{employee.firstName}}</b></p>
+              <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+              <img src="../../../assets/Avatar-png.png" alt="Profile Picture" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
