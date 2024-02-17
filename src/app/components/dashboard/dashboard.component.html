@@ -1,0 +1,272 @@
+<div class="html">
+    <div class="body">
+        <div class="dashboard-container">
+            <aside>
+                <div class="top ">
+                    <div class="logo mt-3">
+                        <img src="../../../assets/comflowhd.png" alt="">
+                        <h2 class="mt-2"><b>COM</b><span class="success"><b class="success">FLOW</b></span></h2>
+                    </div>
+                    <div class="close" id="close-btn">
+                        <span class="material-symbols-outlined">close</span>
+                    </div>
+                </div>
+                <div class="sidebar">
+                    <a href="#" class="active">
+                        <span class="material-symbols-outlined">grid_view</span>
+                        <h3>Dashboard</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-outlined">report</span>
+                        <h3>Complaints</h3>
+                        <span class="message-count">3</span>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-outlined">analytics</span>
+                        <h3>Analytics</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-outlined">done_all</span>
+                        <h3>Solved Complaints</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-outlined">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a routerLink="/">
+                        <span class="material-symbols-outlined">logout</span>
+                        <h3>Logout</h3>
+                    </a>
+                    
+                </div>
+            </aside>
+            
+            <main>
+                <h1 class="my-3">Dashboard</h1>
+                <!--INSIGHT-->
+                <div class="insights">
+        
+                    <div class="complaints">
+                        <span class="material-symbols-outlined">analytics</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Complaints</h3>
+                                <h1>375</h1>
+                            </div>
+                            <div class="progress">
+                              <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                              </svg>
+                              <div class="number">
+                                <p>100%</p>
+                              </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+        
+                    <div class="complaints-resolved">
+                        <span class="material-symbols-outlined">done_all</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Complaints Resolved</h3>
+                                <h1>192</h1>
+                            </div>
+                            <div class="progress">
+                              <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                              </svg>
+                              <div class="number">
+                                <p>52%</p>
+                              </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+        
+                    <div class="complaints-unresolved">
+                        <span class="material-symbols-outlined">report</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Unsolved Complaints</h3>
+                                <h1>183</h1>
+                            </div>
+                            <div class="progress">
+                              <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                              </svg>
+                              <div class="number">
+                                <p>48%</p>
+                              </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+                </div>
+                <!--INSIGHT DONE-->
+                <!--RECENT ORDERS-->
+                <div class="recent-orders">
+                    <h2>Recent Orders</h2>
+                    <table>
+                        <thead>
+                          <tr>
+                            <th>Product Name</th>
+                            <th>Product Number</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                      <tbody>
+                  <tr>
+                    <td>Foldable Mini Drone</td>
+                    <td>85631</td>
+                    <td>Due</td>
+                    <td class="warning">Pending</td>
+                    <td class="primary">Details</td>
+                  </tr>
+                
+                  <tr>
+                    <td>LARVENDER KF102 Drone</td>
+                    <td>36378</td>
+                    <td>Refunded</td>
+                    <td class="danger">Declined</td>
+                    <td class="primary">Details</td>
+                  </tr>
+                
+                  <tr>
+                    <td>Ruko F11 Pro Drone</td>
+                    <td>49347</td>
+                    <td>Due</td>
+                    <td class="warning">Pending</td>
+                    <td class="primary">Details</td>
+                  </tr>
+                
+                  <tr>
+                    <td>Drone with Camera Drone</td>
+                    <td>96996</td>
+                    <td>Paid</td>
+                    <td class="primary">Delivered</td>
+                    <td class="primary">Details</td>
+                  </tr>
+                
+                  <tr>
+                    <td>GPS 4k Drone</td>
+                    <td>22821</td>
+                    <td>Paid</td>
+                    <td class="primary">Delivered</td>
+                    <td class="primary">Details</td>
+                  </tr>
+                
+                  <tr>
+                    <td>DJI Air 2S</td>
+                    <td>81475</td>
+                    <td>Due</td>
+                    <td class="warning">Pending</td>
+                    <td class="primary">Details</td>
+                  </tr>
+                
+                  <tr>
+                    <td>Lozenge Drone</td>
+                    <td>00482</td>
+                    <td>Paid</td>
+                    <td class="primary">Delivered</td>
+                    <td class="primary">Details</td>
+                  </tr>
+                </tbody></table>
+                <!--RECENT ORDERS DONE-->
+                    <a href="">Show All</a>
+                </div>
+            </main>
+            <!--END OF MAIN-->
+
+            <div class="right">
+                <div class="top">
+                  <button id="menu-btn">
+                    <span class="material-symbols-outlined"> menu </span>
+                  </button>
+                  <div class="theme-toggler">
+                    <span class="material-symbols-outlined active"> light_mode </span>
+                    <span class="material-symbols-outlined"> dark_mode </span>
+                  </div>
+                  <div class="profile">
+                    <div class="info">
+                      <p>Hey, <b>Şenol</b></p>
+                      <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                      <img src="../../../assets/Avatar-png.png" alt="Profile Picture" />
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="recent-updates">
+                  <h2>Recent Updates</h2>
+                  <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="https://avatars.githubusercontent.com/u/68616507?v=4" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Emrecan Ay's</b> complaint has been resolved.</p>
+                            <small class="text-muted">2 minutes ago</small>
+                        </div>
+                    </div>
+
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="https://media.licdn.com/dms/image/D4D03AQHAAe8-Kx_XCQ/profile-displayphoto-shrink_800_800/0/1701193903788?e=1713398400&v=beta&t=AAuHcuAPESU-Me8-aHG_DrhWxqfi9XbT92YaJvJCXyU" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Cemal Furkan's</b> complaint could not be resolved.</p>
+                            <small class="text-muted">2 minutes ago</small>
+                        </div>
+                    </div>
+
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="../../../assets/Avatar-png.png" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Şenol Şen</b> has created a new complaint.</p>
+                            <small class="text-muted">2 minutes ago</small>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <!--END OF RECENT UPDATES-->
+                
+                <div class="complaint-categories">
+                    <h2>Complaint Categories</h2>
+                    
+                    <div class="item online">
+                        <div class="icon">
+                            <span class="material-symbols-outlined">terminal</span>
+                        </div>
+                        <div class="right">
+                            <div class="info">
+                                <h3>SOFTWARE-BASED</h3>
+                            </div>
+                            <h5 class="success">+39%</h5>
+                            <h3>3849</h3>
+                        </div>
+                    </div>
+
+                    <div class="item customers">
+                        <div class="icon">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <div class="right">
+                            <div class="info">
+                                <h3>HARDWARE-BASED</h3>
+                                <small class="text-muted">Last 24 Hours</small>
+                            </div>
+                            <h5 class="success">+39%</h5>
+                            <h3>3849</h3>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

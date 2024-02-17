@@ -83,7 +83,7 @@ export class CustomerAuthComponent {
       this.authService.loginForCustomer(loginModelForCustomer).subscribe(response => {
         this.toastr.success("Succesfuly Entry!","Success")
         localStorage.setItem('token',response.token);
-        this.router.navigate(["/"]);
+        this.router.navigate(["/dashboard"]);
       },responseError =>{
         console.log(responseError);
         this.toastr.warning("Please check the entered values!")
