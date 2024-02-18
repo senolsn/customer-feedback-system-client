@@ -21,8 +21,70 @@
                   <td>{{complaint.title}}</td>
                   <td>{{complaint.customer.firstName +' '+ complaint.customer.lastName}}</td>
                   <td>{{complaint.employee.firstName +' '+ complaint.employee.lastName}}</td>
-                  <td class="danger">{{complaint.complaintStatus == 2 ? "Solved" : complaint.complaintStatus}}</td>
-                  <td class="primary">Details</td>
+                  <td class="success">{{complaint.complaintStatus == 2 ? "Solved" : complaint.complaintStatus}}</td>
+                  <td class="primary">
+                    <span
+                      style="cursor: pointer"
+                      data-bs-toggle="modal"
+                      [attr.data-bs-target]="'#myModal' + complaint.complaintId"
+                    >
+                      Details
+                    </span>
+                    <div
+                      class="modal fade"
+                      [id]="'myModal' + complaint.complaintId"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                      >
+                        <div
+                          class="modal-content"
+                          style="
+                            position: relative;
+                            left: 44rem;
+                            top: 2rem;
+                            height: 300px;
+                          "
+                        >
+                          <!-- Modal Header -->
+                          <div
+                            style="position: relative; left: 5rem"
+                            class="modal-header mt-4"
+                          >
+                            <h2
+                              style="
+                                padding: 0 !important;
+                                border: 0 !important;
+                                border-bottom: 1px !important;
+                              "
+                            >
+                              Customer Note
+                            <p>-------------------------------------</p>
+                            </h2>
+                          </div>
+  
+                          <!-- Modal body -->
+                          <div class="modal-body mt-3" style="color: black">
+                            {{ complaint.description }}
+                            <br>
+                            <br>
+                            <h2 class="primary" style="
+                            padding: 0 !important;
+                            border: 0 !important;
+                            border-bottom: 1px !important;
+                          ">Employee Note
+                            <p>-------------------------------------</p>
+  
+                        </h2>
+                            {{complaint.employeeNote}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -41,7 +103,7 @@
             <div class="profile">
               <div class="info">
                 <p>Hey, <b>{{employee.firstName}}</b></p>
-                <small class="text-muted">Admin</small>
+                <small class="text-muted">Employee</small>
               </div>
               <div class="profile-photo">
                 <img src="../../../assets/Avatar-png.png" alt="Profile Picture" />

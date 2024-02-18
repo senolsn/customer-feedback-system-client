@@ -115,10 +115,10 @@
                   }}
                 </td>
                 <td class="primary">
-                  <span style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#myModal">
+                  <span style="cursor: pointer;" data-bs-toggle="modal" [attr.data-bs-target]="'#myModal' + complaint.complaintId">
                   Details
                 </span>
-                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" [id]="'myModal' + complaint.complaintId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content" style="position: relative; left: 44rem; top: 2rem; height: 300px;">
                 
@@ -128,7 +128,7 @@
                       </div>
                 
                       <!-- Modal body -->
-                      <div class="modal-body mt-3">
+                      <div class="modal-body mt-3" style="color: black;">
                         {{complaint.description}}
                       </div>
                     </div>

@@ -8,21 +8,170 @@
           <h2>Continuing complaints</h2>
           <table>
             <thead>
-              <tr>
+              <tr class="px-1">
                 <th>Title</th>
                 <th>Customer</th>
                 <th>Employee</th>
                 <th>Status</th>
+                <th>Details</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let complaint of unResolvedComplaints">
-                <td>{{complaint.title}}</td>
-                <td>{{complaint.customer.firstName +' '+ complaint.customer.lastName}}</td>
-                <td>{{complaint.employee.firstName +' '+ complaint.employee.lastName}}</td>
-                <td class="warning">{{complaint.complaintStatus == 1 ? "Inprogress" : complaint.complaintStatus}}</td>
-                <td class="primary">Details</td>
+                <td>{{ complaint.title }}</td>
+                <td>
+                  {{
+                    complaint.customer.firstName +
+                      " " +
+                      complaint.customer.lastName
+                  }}
+                </td>
+                <td>
+                  {{
+                    complaint.employee.firstName +
+                      " " +
+                      complaint.employee.lastName
+                  }}
+                </td>
+                <td class="warning">
+                  {{
+                    complaint.complaintStatus == 1
+                      ? "In progress"
+                      : complaint.complaintStatus
+                  }}
+                </td>
+                <td class="primary">
+                  <span
+                    style="cursor: pointer"
+                    data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#myModal' + complaint.complaintId"
+                  >
+                    Details
+                  </span>
+                  <div
+                    class="modal fade"
+                    [id]="'myModal' + complaint.complaintId"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div
+                      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                    >
+                      <div
+                        class="modal-content"
+                        style="
+                          position: relative;
+                          left: 44rem;
+                          top: 2rem;
+                          height: 300px;
+                        "
+                      >
+                        <!-- Modal Header -->
+                        <div
+                          style="position: relative; left: 5rem"
+                          class="modal-header mt-4"
+                        >
+                          <h2
+                            style="
+                              padding: 0 !important;
+                              border: 0 !important;
+                              border-bottom: 1px !important;
+                            "
+                          >
+                            Customer Note
+                          <p>-------------------------------------</p>
+                          </h2>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body mt-3" style="color: black">
+                          {{ complaint.description }}
+                          <br>
+                          <br>
+                          <h2 class="primary" style="
+                          padding: 0 !important;
+                          border: 0 !important;
+                          border-bottom: 1px !important;
+                        ">Employee Note
+                          <p>-------------------------------------</p>
+
+                      </h2>
+                          {{complaint.employeeNote}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="secondary">
+                  <span
+                    class="material-symbols-outlined"
+                    style="cursor: pointer"
+                    data-bs-toggle="modal"
+                    [attr.data-bs-target]="
+                      '#employeeNoteModal' + complaint.complaintId
+                    "
+                    >edit_note</span
+                  >
+                  <div
+                    class="modal fade"
+                    [id]="'employeeNoteModal' + complaint.complaintId"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div
+                      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                    >
+                      <div
+                        class="modal-content"
+                        style="
+                          position: relative;
+                          left: 44rem;
+                          top: 2rem;
+                          height: 300px;
+                        "
+                      >
+                        <!-- Modal Header -->
+                        <div
+                          class="modal-header mt-4"
+                          style="position: relative; left: 10.5rem"
+                        >
+                          <h2 class="modal-title primary">Customer Note</h2>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body" style="color: black">
+                          <p>{{ complaint.description }}</p>
+                          <div class="form-group">
+                            <label class="my-3" for="employeeNote"
+                              ><b>Employee Note:</b></label
+                            >
+                            <textarea [(ngModel)]="employeeNoteValue" name="employeeNote" id="employeeNote" cols="15" rows="3" style="border: 1px solid black; width: 90%; justify-content: center; display: inline !important;" class="form-control"></textarea>
+
+                          </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer justify-content-center">
+                          <button
+                            type="button"
+                            class="btn secondary text-sm mb-3"
+                            data-bs-dismiss="modal"
+                          >
+                            <span (click)="updateEmployeeNoteForComplaints(complaint)" class="material-symbols-outlined"
+                              >save_as</span
+                            >
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="success">
+                  <span style="cursor: pointer;" (click)="markComplaintAsResolved(complaint)" class="material-symbols-outlined">done</span>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -40,8 +189,10 @@
           </div>
           <div class="profile">
             <div class="info">
-              <p>Hey, <b>{{employee.firstName}}</b></p>
-              <small class="text-muted">Admin</small>
+              <p>
+                Hey, <b>{{ employee.firstName }}</b>
+              </p>
+              <small class="text-muted">Employee</small>
             </div>
             <div class="profile-photo">
               <img src="../../../assets/Avatar-png.png" alt="Profile Picture" />
