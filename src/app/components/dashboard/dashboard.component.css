@@ -210,15 +210,15 @@ main .insights small{
     display: block;
 }
 
-main .recent-orders{
+main .new-complaints{
     margin-top: 2rem;   
 }
 
-main .recent-orders h2{
+main .new-complaints h2{
     margin-bottom: 0.8rem;
 }
 
-main .recent-orders table{
+main .new-complaints table{
     background: var(--color-white);
     width: 100%;
     border-radius: var(--card-border-radius);
@@ -228,7 +228,7 @@ main .recent-orders table{
     transition: all 300ms ease;
 }
 
-main .recent-orders table:hover{
+main .new-complaints table:hover{
     box-shadow: none;
 }
 
@@ -247,7 +247,7 @@ main table tbody tr:last-child td{
     border: none;
 }
 
-main .recent-orders a{
+main .new-complaints a{
     text-align: center;
     display: block;
     margin: 1rem auto;
@@ -429,7 +429,7 @@ main .recent-orders a{
         position: relative;
         right: 2rem;
     }
-    .recent-orders h2{
+    .new-complaints h2{
         padding-left: 1rem;
     }
 
@@ -454,22 +454,22 @@ main .recent-orders a{
       grid-template-columns: 1fr;
       gap: 0;
     }
-    main .recent-orders {
+    main .new-complaints {
       width: 94%;
       position: absolute;
       left: 35%;
       transform: translateX(-50%);
       margin: 2rem 0 0 8.8rem;
     }
-    main .recent-orders table {
+    main .new-complaints table {
       width: 83vw;
     }
-    main .recent-orders table thead tr th:first-child,
-    main .recent-orders table thead tr th:last-child {
+    main .new-complaints table thead tr th:first-child,
+    main .new-complaints table thead tr th:last-child {
       display: none;
     }
-    main .recent-orders table tbody tr td:first-child,
-    main .recent-orders table tbody tr td:last-child {
+    main .new-complaints table tbody tr td:first-child,
+    main .new-complaints table tbody tr td:last-child {
       display: none;
     }
   }
@@ -487,7 +487,7 @@ main .recent-orders a{
       left: 0rem;
     }
 
-    .recent-orders{
+    .new-complaints{
       display:contents ;
     }
 
@@ -543,12 +543,12 @@ main .recent-orders a{
       margin-top: 8rem;
       padding: 0 1rem;
     }
-    main .recent-orders {
+    main .new-complaints {
       position: relative;
       margin: 3rem 0 0 0;
       width: 100%;
     }
-    main .recent-orders table {
+    main .new-complaints table {
       width: 100%;
       margin: 0;
     }

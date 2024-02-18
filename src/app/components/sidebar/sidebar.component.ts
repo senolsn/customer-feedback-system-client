@@ -1,3 +1,4 @@
+import { Toast, ToastrService } from 'ngx-toastr';
 // sidebar.component.ts
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -9,5 +10,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class SidebarComponent {
 
 
+  constructor(
+    private toastrService:ToastrService
+  ) {}
+
+  
+  logOut(){
+    localStorage.removeItem("token");
+    this.toastrService.warning("Çıkış Yapılıyor...,","Başarılı")
+  }
  
 }

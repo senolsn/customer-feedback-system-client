@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SolvedComplaintsComponent } from './components/solved-complaints/solved-complaints.component';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { SolvedComplaintsComponent } from './components/solved-complaints/solved
     ReactiveFormsModule,FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    DialogModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })

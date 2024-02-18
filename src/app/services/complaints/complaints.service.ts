@@ -1,3 +1,4 @@
+import { UpdateComplaintModelForEmployee } from './../../models/updateComplaintModelForEmployee';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -39,5 +40,15 @@ export class ComplaintsService {
   getAllUnresolvedComplaints(){
     let newPath = this.apiUrl + 'Complaints/GetAllUnsolvedComplaints'
     return this.httpClient.get<ListResponseModel<Complaint>>(newPath);
+  }
+
+  updateForEmployee(updateComplaintModelForEmployee:UpdateComplaintModelForEmployee){
+    let newPath = this.apiUrl + 'Complaints/UpdateForEmployee';
+    return this.httpClient.put(newPath,updateComplaintModelForEmployee);
+  }
+
+  delete(complaint:Complaint){
+    let newPath = this.apiUrl + 'Complaints/Delete';
+    return this.httpClient.post(newPath,complaint);
   }
 }

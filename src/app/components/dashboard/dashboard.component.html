@@ -1,186 +1,250 @@
 <div class="html">
-    <div class="body">
-        <div class="dashboard-container">
-          <app-sidebar></app-sidebar>
-          <main>
-                <h1 class="my-3">Dashboard</h1>
-                <!--INSIGHT-->
-                <div class="insights">
-        
-                    <div class="complaints">
-                        <span class="material-symbols-outlined">analytics</span>
-                        <div class="middle">
-                            <div class="left">
-                                <h3>Total Complaints</h3>
-                                <h1>{{complaints.length}}</h1>
-                            </div>
-                            <div class="progress">
-                              <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                              </svg>
-                              <div class="number">
-                                <p>100%</p>
-                              </div>
-                            </div>
-                        </div>
-                        <small class="text-muted">Last 24 Hours</small>
-                    </div>
-        
-                    <div class="complaints-resolved">
-                        <span class="material-symbols-outlined">done_all</span>
-                        <div class="middle">
-                            <div class="left">
-                                <h3>Total Complaints Resolved</h3>
-                                <h1>{{allResolvedComplaints.length}}</h1>
-                            </div>
-                            <div class="progress">
-                              <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                              </svg>
-                              <div class="number">
-                                <p>{{(allResolvedComplaints.length / complaints.length * 100) | number:'1.0-0'}}%</p>
-                              </div>
-                            </div>
-                        </div>
-                        <small class="text-muted">Last 24 Hours</small>
-                    </div>
-        
-                    <div class="complaints-unresolved">
-                        <span class="material-symbols-outlined">report</span>
-                        <div class="middle">
-                            <div class="left">
-                                <h3>Total Unsolved Complaints</h3>
-                                <h1>{{allUnresolvedComplaints.length}}</h1>
-                            </div>
-                            <div class="progress">
-                              <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                              </svg>
-                              <div class="number">
-                                <p>{{(allUnresolvedComplaints.length / complaints.length * 100) | number:'1.0-0'}}%</p>
-
-                              </div>
-                            </div>
-                        </div>
-                        <small class="text-muted">Last 24 Hours</small>
-                    </div>
-                </div>
-                <!--INSIGHT DONE-->
-                <!--RECENT ORDERS-->
-                <div class="recent-orders">
-                    <h2>New Complaints</h2>
-                    <table>
-                        <thead>
-                          <tr>
-                            <th>Title</th>
-                            <th>Customer</th>
-                            <th>Employee</th>
-                            <th>Status</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                      <tbody>
-                        <tr *ngFor="let complaint of unResolvedComplaints">
-                          <td>{{complaint.title}}</td>
-                          <td>{{complaint.customer.firstName +' '+ complaint.customer.lastName}}</td>
-                          <td>{{complaint.employee.firstName +' '+ complaint.employee.lastName}}</td>
-                          <td class="success">{{complaint.complaintStatus == 0 ? "Created" : complaint.complaintStatus}}</td>
-                          <td class="primary">Details</td>
-                        </tr>
-                </tbody></table>
-                <!--RECENT ORDERS DONE-->
-                    <a href="">Show All</a>
-                </div>
-          </main>
-            <!--END OF MAIN-->
-
-            <div class="right">
-                <div class="top">
-                  <button id="menu-btn">
-                    <span class="material-symbols-outlined"> menu </span>
-                  </button>
-                  <div class="theme-toggler">
-                    <span class="material-symbols-outlined active"> light_mode </span>
-                    <span class="material-symbols-outlined"> dark_mode </span>
-                  </div>
-                  <div class="profile">
-                    <div class="info">
-                      <p>Hey, <b>{{employee.firstName}}</b></p>
-                      <small class="text-muted">Admin</small>
-                    </div>
-                    <div class="profile-photo">
-                      <img src="../../../assets/Avatar-png.png" alt="Profile Picture" />
-                    </div>
-                  </div>
-                </div>
-        
-                <div class="recent-updates">
-                  <h2>Recent Updates</h2>
-                  <div class="updates">
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="https://avatars.githubusercontent.com/u/68616507?v=4" alt="">
-                        </div>
-                        <div class="message">
-                            <p><b>Emrecan Ay's</b> complaint has been resolved.</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="https://media.licdn.com/dms/image/D4D03AQHAAe8-Kx_XCQ/profile-displayphoto-shrink_800_800/0/1701193903788?e=1713398400&v=beta&t=AAuHcuAPESU-Me8-aHG_DrhWxqfi9XbT92YaJvJCXyU" alt="">
-                        </div>
-                        <div class="message">
-                            <p><b>Cemal Furkan's</b> complaint could not be resolved.</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../../../assets/Avatar-png.png" alt="">
-                        </div>
-                        <div class="message">
-                            <p><b>Şenol Şen</b> has created a new complaint.</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <!--END OF RECENT UPDATES-->
-                
-                <div class="complaint-categories">
-                    <h2>Complaint Categories</h2>
-                    
-                    <div class="item online">
-                        <div class="icon">
-                            <span class="material-symbols-outlined">terminal</span>
-                        </div>
-                        <div class="right">
-                            <div class="info">
-                                <h3>SOFTWARE-BASED</h3>
-                            </div>
-                            <h5 class="success">+39%</h5>
-                            <h3>3849</h3>
-                        </div>
-                    </div>
-
-                    <div class="item customers">
-                        <div class="icon">
-                            <span class="material-symbols-outlined">person</span>
-                        </div>
-                        <div class="right">
-                            <div class="info">
-                                <h3>HARDWARE-BASED</h3>
-                                <small class="text-muted">Last 24 Hours</small>
-                            </div>
-                            <h5 class="success">+39%</h5>
-                            <h3>3849</h3>
-                        </div>
-                    </div>
+  <div class="body">
+    <div class="dashboard-container">
+      <app-sidebar></app-sidebar>
+      <main>
+        <h1 class="my-3">Dashboard</h1>
+        <!--INSIGHT-->
+        <div class="insights">
+          <div class="complaints">
+            <span class="material-symbols-outlined">analytics</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Complaints</h3>
+                <h1>{{ complaints.length }}</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>100%</p>
                 </div>
               </div>
+            </div>
+            <small class="text-muted">Last 24 Hours</small>
+          </div>
+
+          <div class="complaints-resolved">
+            <span class="material-symbols-outlined">done_all</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Complaints Resolved</h3>
+                <h1>{{ allResolvedComplaints.length }}</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>
+                    {{
+                      (allResolvedComplaints.length / complaints.length) * 100
+                        | number : "1.0-0"
+                    }}%
+                  </p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last 24 Hours</small>
+          </div>
+
+          <div class="complaints-unresolved">
+            <span class="material-symbols-outlined">report</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Unsolved Complaints</h3>
+                <h1>{{ allUnresolvedComplaints.length }}</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>
+                    {{
+                      (allUnresolvedComplaints.length / complaints.length) * 100
+                        | number : "1.0-0"
+                    }}%
+                  </p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last 24 Hours</small>
+          </div>
         </div>
+        <!--INSIGHT DONE-->
+        <!--RECENT ORDERS-->
+        <div class="new-complaints">
+          <h2>New Complaints</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Status</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let complaint of unResolvedComplaints">
+                <td>{{ complaint.title }}</td>
+                <td>
+                  {{
+                    complaint.customer.firstName +
+                      " " +
+                      complaint.customer.lastName
+                  }}
+                </td>
+                <td>
+                  {{
+                    complaint.employee.firstName +
+                      " " +
+                      complaint.employee.lastName
+                  }}
+                </td>
+                
+                <td class="warning">
+                  {{
+                    complaint.complaintStatus == 0
+                      ? "Created"
+                      : complaint.complaintStatus
+                  }}
+                </td>
+                <td class="primary">
+                  <span style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#myModal">
+                  Details
+                </span>
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content" style="position: relative; left: 44rem; top: 2rem; height: 300px;">
+                
+                      <!-- Modal Header -->
+                      <div style="position: relative; left: 11.7rem;" class="modal-header mt-4">
+                        <h2 style="padding: 0 !important; border: 0 !important; border-bottom: 1px !important;">Description</h2>
+                      </div>
+                
+                      <!-- Modal body -->
+                      <div class="modal-body mt-3">
+                        {{complaint.description}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+
+              <td class="success" style="cursor: pointer;" (click)="markComplaintAsInprogress(complaint)"><span class="material-symbols-outlined">done</span></td>      
+              <td class="danger" style="cursor: pointer;" (click)="deleteComplaints(complaint)"><span class="material-symbols-outlined">close</span></td>      
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <!--END OF MAIN-->
+      
+
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-symbols-outlined active"> light_mode </span>
+            <span class="material-symbols-outlined"> dark_mode </span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>
+                Hey, <b>{{ employee.firstName }}</b>
+              </p>
+              <small class="text-muted">Employee</small>
+            </div>
+            <div class="profile-photo">
+              <img src="../../../assets/Avatar-png.png" alt="Profile Picture" />
+            </div>
+          </div>
+        </div>
+
+        <div class="recent-updates">
+          <h2>Recent Updates</h2>
+          <div class="updates">
+            <div class="update">
+              <div class="profile-photo">
+                <img
+                  src="https://avatars.githubusercontent.com/u/68616507?v=4"
+                  alt=""
+                />
+              </div>
+              <div class="message">
+                <p><b>Emrecan Ay's</b> complaint has been resolved.</p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+
+            <div class="update">
+              <div class="profile-photo">
+                <img
+                  src="https://media.licdn.com/dms/image/D4D03AQHAAe8-Kx_XCQ/profile-displayphoto-shrink_800_800/0/1701193903788?e=1713398400&v=beta&t=AAuHcuAPESU-Me8-aHG_DrhWxqfi9XbT92YaJvJCXyU"
+                  alt=""
+                />
+              </div>
+              <div class="message">
+                <p><b>Cemal Furkan's</b> complaint could not be resolved.</p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+
+            <div class="update">
+              <div class="profile-photo">
+                <img src="../../../assets/Avatar-png.png" alt="" />
+              </div>
+              <div class="message">
+                <p><b>Şenol Şen</b> has created a new complaint.</p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--END OF RECENT UPDATES-->
+
+        <div class="complaint-categories">
+          <h2>Complaint Categories</h2>
+
+          <div class="item online">
+            <div class="icon">
+              <span class="material-symbols-outlined">terminal</span>
+            </div>
+            <div class="right">
+              <div class="info">
+                <h3>SOFTWARE-BASED</h3>
+              </div>
+              <h5 class="success">+39%</h5>
+              <h3>3849</h3>
+            </div>
+          </div>
+
+          <div class="item customers">
+            <div class="icon">
+              <span class="material-symbols-outlined">person</span>
+            </div>
+            <div class="right">
+              <div class="info">
+                <h3>HARDWARE-BASED</h3>
+                <small class="text-muted">Last 24 Hours</small>
+              </div>
+              <h5 class="success">+39%</h5>
+              <h3>3849</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+
+<!-- The Modal -->
+<!-- The Modal -->
+
