@@ -1,0 +1,295 @@
+<div class="html">
+  <div class="body">
+    <div class="side-container">
+      <aside>
+        <div class="top">
+          <div class="logo mt-3">
+            <img
+              src="../../../assets/comflowhd.png"
+              alt=""
+              style="cursor: pointer"
+              routerLink="/dashboard"
+            />
+            <h2 routerLink="/dashboard" style="cursor: pointer" class="mt-2">
+              <b>COM</b><span class="success"><b class="success">FLOW</b></span>
+            </h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-symbols-outlined">close</span>
+          </div>
+        </div>
+        <div class="sidebar">
+          <a routerLink="/dashboard" class="">
+            <span class="material-symbols-outlined">grid_view</span>
+            <h3>Dashboard</h3>
+          </a>
+          <a routerLink="/complaints">
+            <span class="material-symbols-outlined">report</span>
+            <h3>Complaints</h3>
+          </a>
+          <a>
+            <span class="material-symbols-outlined">settings</span>
+            <h3>Settings</h3>
+          </a>
+          <a routerLink="/">
+            <span class="material-symbols-outlined">logout</span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+
+      <main>
+        <div class="new-complaints">
+            <h2>My Complaints</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Customer</th>
+                  <th>Employee</th>
+                  <th>Status</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let complaint of unResolvedComplaints">
+                  <td>{{ complaint.title }}</td>
+                  <td>
+                    {{
+                      complaint.customer.firstName +
+                        " " +
+                        complaint.customer.lastName
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      complaint.employee.firstName +
+                        " " +
+                        complaint.employee.lastName
+                    }}
+                  </td>
+                  
+                  <td [ngSwitch]="complaint.complaintStatus">
+                    <ng-container *ngSwitchCase="0">Created</ng-container>
+                    <ng-container *ngSwitchCase="1">In Progress</ng-container>
+                    <ng-container *ngSwitchCase="2">Resolved</ng-container>
+                    <ng-container *ngSwitchDefault>Unknown</ng-container>
+                  </td>
+                  <td class="primary">
+                    <span style="cursor: pointer;" data-bs-toggle="modal" [attr.data-bs-target]="'#myModal' + complaint.complaintId">
+                    Details
+                  </span>
+                  <div
+                      class="modal fade"
+                      [id]="'myModal' + complaint.complaintId"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                      >
+                        <div
+                          class="modal-content"
+                          style="
+                            position: relative;
+                            left: 44rem;
+                            top: 2rem;
+                            height: 300px;
+                          "
+                        >
+                          <!-- Modal Header -->
+                          <div
+                            style="position: relative; left: 5rem"
+                            class="modal-header mt-4"
+                          >
+                            <h2
+                              style="
+                                padding: 0 !important;
+                                border: 0 !important;
+                                border-bottom: 1px !important;
+                              "
+                            >
+                              Customer Note
+                            <p>-------------------------------------</p>
+                            </h2>
+                          </div>
+  
+                          <!-- Modal body -->
+                          <div class="modal-body mt-3" style="color: black">
+                            {{ complaint.description }}
+                            <br>
+                            <br>
+                            <h2 class="primary" style="
+                            padding: 0 !important;
+                            border: 0 !important;
+                            border-bottom: 1px !important;
+                          ">Employee Note
+                            <p>-------------------------------------</p>
+  
+                        </h2>
+                            {{complaint.employeeNote}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </td>
+
+
+                
+                <td *ngIf="complaint.complaintStatus === 0" 
+                    class="secondary" 
+                    [style.cursor]="'pointer'"
+                    (click)="handleClick(complaint)">
+                    <span style="cursor: pointer;" data-bs-toggle="modal" [attr.data-bs-target]="'#myEditModal' + complaint.complaintId" class="material-symbols-outlined">edit</span>
+                    <div
+                      class="modal fade"
+                      [id]="'myEditModal' + complaint.complaintId"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content" style="position: relative;left: 44rem; top: 2rem; height: 300px;">
+                          <!-- Modal Header -->
+                          <div style="position: relative; left: 5rem" class="modal-header mt-4">
+                            <h2 style=" padding: 0 !important; border: 0 !important; border-bottom: 1px !important;">
+                              Update Complaints
+                            <p>-------------------------------------</p>
+                            </h2>
+                          </div>
+  
+                          <!-- Modal body -->
+                          <div class="modal-body mt-3" style="color: black">
+                            
+                                <div class="mb-3">
+                                  <label for="inputTitle" class="form-label my-2"><b>Title</b></label>
+                                  <input style="border:1px solid black" type="text" class="form-control" id="inputTitle" [(ngModel)]="complaint.title">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="inputDescription" class="form-label">Description</label>
+                                  <textarea style="border:1px solid; padding: 5px;" class="form-control" id="inputDescription" rows="5" [(ngModel)]="complaint.description"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="inputAssignee" class="form-label">Employee</label>
+                                  <select style="border:1px solid" class="form-select" id="inputAssignee">
+                                    <option value="John">John</option>
+                                    <option value="Doe">Doe</option>
+                                    <option value="Smith">Smith</option>
+                                    <!-- Diğer yetkilileri buraya ekleyebilirsiniz -->
+                                  </select>
+                                </div>
+                                <button style="width: 100px; height: 30px;"   type="button" class="btn btn-primary btn-xl m-2">Update</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </td>
+                <td></td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </main>
+
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-symbols-outlined active"> light_mode </span>
+            <span class="material-symbols-outlined"> dark_mode </span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>
+                Hey, <b>{{ customer.firstName }}</b>
+              </p>
+              <small class="text-muted">Employee</small>
+            </div>
+            <div class="profile-photo">
+              <img src="../../../assets/Avatar-png.png" alt="Profile Picture" />
+            </div>
+          </div>
+        </div>
+
+        <div class="recent-updates">
+          <h2>Recent Updates</h2>
+          <div class="updates">
+            <div class="update">
+              <div class="profile-photo">
+                <img
+                  src="https://avatars.githubusercontent.com/u/68616507?v=4"
+                  alt=""
+                />
+              </div>
+              <div class="message">
+                <p><b>Emrecan Ay's</b> complaint has been resolved.</p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+
+            <div class="update">
+              <div class="profile-photo">
+                <img
+                  src="https://media.licdn.com/dms/image/D4D03AQHAAe8-Kx_XCQ/profile-displayphoto-shrink_800_800/0/1701193903788?e=1713398400&v=beta&t=AAuHcuAPESU-Me8-aHG_DrhWxqfi9XbT92YaJvJCXyU"
+                  alt=""
+                />
+              </div>
+              <div class="message">
+                <p><b>Cemal Furkan's</b> complaint could not be resolved.</p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+
+            <div class="update">
+              <div class="profile-photo">
+                <img src="../../../assets/Avatar-png.png" alt="" />
+              </div>
+              <div class="message">
+                <p><b>Şenol Şen</b> has created a new complaint.</p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--END OF RECENT UPDATES-->
+
+        <div class="complaint-categories">
+          <h2>Complaint Categories</h2>
+
+          <div class="item online">
+            <div class="icon">
+              <span class="material-symbols-outlined">terminal</span>
+            </div>
+            <div class="right">
+              <div class="info">
+                <h3>SOFTWARE-BASED</h3>
+              </div>
+              <h5 class="success">+39%</h5>
+              <h3>3849</h3>
+            </div>
+          </div>
+
+          <div class="item customers">
+            <div class="icon">
+              <span class="material-symbols-outlined">person</span>
+            </div>
+            <div class="right">
+              <div class="info">
+                <h3>HARDWARE-BASED</h3>
+                <small class="text-muted">Last 24 Hours</small>
+              </div>
+              <h5 class="success">+39%</h5>
+              <h3>3849</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

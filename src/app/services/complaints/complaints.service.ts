@@ -2,6 +2,7 @@ import { UpdateComplaintModelForEmployee } from './../../models/updateComplaintM
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UpdateComplaintModelForCustomer } from 'src/app/models/UpdateComplaintModelForCustomer';
 import { Complaint } from 'src/app/models/complaint';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
 
@@ -32,6 +33,11 @@ export class ComplaintsService {
     return this.httpClient.get<ListResponseModel<Complaint>>(newPath);
   }
 
+  getAllComplaintsByCustomerId(customerId:string):Observable<ListResponseModel<Complaint>>{
+    let newPath = this.apiUrl +'Complaints/GetAllComplaintsByCustomerId?customerId='+customerId
+    return this.httpClient.get<ListResponseModel<Complaint>>(newPath);
+  }
+
   getAllResolvedComplaints(){
     let newPath = this.apiUrl + 'Complaints/GetAllResolvedComplaints'
     return this.httpClient.get<ListResponseModel<Complaint>>(newPath);
@@ -42,9 +48,15 @@ export class ComplaintsService {
     return this.httpClient.get<ListResponseModel<Complaint>>(newPath);
   }
 
+
   updateForEmployee(updateComplaintModelForEmployee:UpdateComplaintModelForEmployee){
     let newPath = this.apiUrl + 'Complaints/UpdateForEmployee';
     return this.httpClient.put(newPath,updateComplaintModelForEmployee);
+  }
+
+  updateForCustomer(updateComplaintModelForCustomer:UpdateComplaintModelForCustomer){
+    let newPath = this.apiUrl + 'Complaints/UpdateForCustomer';
+    return this.httpClient.put(newPath,updateComplaintModelForCustomer);
   }
 
   delete(complaint:Complaint){

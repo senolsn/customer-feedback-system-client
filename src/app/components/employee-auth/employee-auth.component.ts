@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-customer-auth',
-  templateUrl: './customer-auth.component.html',
-  styleUrls: ['./customer-auth.component.css']
+  selector: 'app-employee-auth',
+  templateUrl: './employee-auth.component.html',
+  styleUrls: ['./employee-auth.component.css']
 })
-export class CustomerAuthComponent {
+export class EmployeeAuthComponent {
   @ViewChild('container') container!: ElementRef;
-  registerForCustomerForm: FormGroup;
-  loginForCustomerForm:FormGroup;
+  registerForEmployeeForm: FormGroup;
+  loginForEmployeeForm:FormGroup;
 
   constructor(
     private authService: AuthService,
@@ -22,13 +22,13 @@ export class CustomerAuthComponent {
   ) {}
 
   ngOnInit(): void {
-    this.createRegisterForCustomerForm();
-    this.createLoginForCustomerForm();
+    this.createRegisterForEmployeeForm();
+    this.createLoginForEmployeeForm();
   }
 
   //Form Oluştur.
-  createRegisterForCustomerForm() {
-    this.registerForCustomerForm = this.formBuilder.group({
+  createRegisterForEmployeeForm() {
+    this.registerForEmployeeForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
@@ -36,31 +36,32 @@ export class CustomerAuthComponent {
       confirmPassword: ['', Validators.required],
     });
   }
-
-  createLoginForCustomerForm(){
-    this.loginForCustomerForm = this.formBuilder.group({
-      email:['',Validators.required],
-      password:['',Validators.required]
+  createLoginForEmployeeForm(){
+    this.loginForEmployeeForm = this.formBuilder.group({
+      email: ['',Validators.required],
+      password: ['',Validators.required]
     })
   }
+
+
   //Kayıt İşlemini Gerçekleştir.
-  registerForCustomer() {
-    if (this.registerForCustomerForm.valid) {
-      const password = this.registerForCustomerForm.get('password')?.value;
-      const confirmpassword = this.registerForCustomerForm.get('confirmPassword')?.value;
+  registerForEmployee() {
+    if (this.registerForEmployeeForm.valid) {
+      const password = this.registerForEmployeeForm.get('password')?.value;
+      const confirmpassword = this.registerForEmployeeForm.get('confirmPassword')?.value;
 
       if (password == confirmpassword) {
-        let registerModelForCustomer = Object.assign(
+        let registerModelForEmployee = Object.assign(
           {},
-          this.registerForCustomerForm.value
+          this.registerForEmployeeForm.value
         );
         this.authService
-          .registerForCustomer(registerModelForCustomer)
+          .registerForEmployee(registerModelForEmployee)
           .subscribe(
             (response) => {
               this.toastr.success('Successfuly Entry!', 'Success');
               localStorage.setItem('token', response.data.token);
-              this.router.navigate(['/']);
+              this.router.navigate(['/dashboard']);
             },
             (responseError) => {
               console.log(responseError);
@@ -76,19 +77,18 @@ export class CustomerAuthComponent {
       this.toastr.warning('Please check the entered values!');
     }
   }
-
-  loginForCustomer(){
-    if(this.loginForCustomerForm.valid){
-      let loginModelForCustomer = Object.assign({},this.loginForCustomerForm.value);
-      this.authService.loginForCustomer(loginModelForCustomer).subscribe(response => {
-        this.toastr.success("Succesfuly Entry!","Success")
+  loginForEmployee(){
+    if(this.loginForEmployeeForm.valid){
+      let loginModelForEmployee = Object.assign({},this.loginForEmployeeForm.value);
+      this.authService.loginForEmployee(loginModelForEmployee).subscribe(response => {
+        this.toastr.success("Successfuly Entry!","Success")
         localStorage.setItem('token',response.data.token);
-        this.router.navigate(["/"]);
-      },responseError =>{
-        console.log(responseError);
+        this.router.navigate(["admin/dashboard"]);
+      }, responseError => {
         this.toastr.warning("Please check the entered values!")
       })
     }
+
   }
 
   //Kayıt-Giriş sayfasındaki animasyon geçişi
